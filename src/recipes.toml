@@ -1,0 +1,75 @@
+[item.dirt]
+recipe = "$starter"
+class = ["ground"]
+
+[item.air]
+recipe = "$starter"
+class = ["light", "sky", "high", "cool"]
+
+[item.fire]
+recipe = "$starter"
+class = ["hot", "bright"]
+
+[item.water]
+recipe = "$starter"
+class = ["liquid", "cool"]
+
+[item.lava]
+recipe = [".hot", ".ground"]
+class = ["hot", "bright", "ground"]
+
+[item.rock]
+recipe = ["#lava", ".cool"]
+class = ["hard", "ground", "heavy"]
+
+[item.hill]
+recipe = [".ground", ".ground"]
+class = ["ground", "big"]
+
+[item.planet]
+recipe = [[".ground", ".big"], ".big"]
+class = ["ground", "big", "huge"]
+
+[item.light]
+recipe = [".bright", ".bright"]
+class = ["bright", "light"]
+
+[item.sky]
+recipe = ["#air", "#air"]
+class = ["light", "bright", "sky"]
+
+[item.space]
+recipe = ["#sky", "#sky"]
+class = ["light", "bright", "sky", "alien"]
+
+[item.tool]
+recipe = ["#rock", "#rock"]
+class = ["heavy", "hurt", "tool"]
+
+[item.lightning]
+recipe = [".sky", "#fire"]
+class = ["hot", "bright", "sky", "power"]
+
+[item.clay]
+recipe = [".liquid", "#dirt"]
+class = ["ground"]
+
+[item.life]
+recipe = [["#water", "#air"], ["#clay", "#lightning"]]
+class = ["life"]
+
+[item.death]
+recipe = [[".hot", ".hurt"], ".life"]
+class = []
+
+[item.person]
+recipe = ["#life", ".big"]
+class = ["life", "human"]
+
+[item.village]
+recipe = ["#person", "#person"]
+class = ["big"]
+
+[item.worker]
+recipe = ["#person", ".tool"]
+class = ["life", "human"]
