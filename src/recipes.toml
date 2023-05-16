@@ -19,15 +19,15 @@ recipe = [".hot", ".ground"]
 class = ["hot", "bright", "ground"]
 
 [item.rock]
-recipe = ["#lava", ".cool"]
-class = ["hard", "ground", "heavy"]
+recipe = ["#lava", ["#time", ".cool"]]
+class = ["hard", "ground", "build"]
 
 [item.hill]
 recipe = [".ground", ".ground"]
 class = ["ground", "big"]
 
 [item.planet]
-recipe = [[".ground", ".big"], ".big"]
+recipe = ["#hill", "#hill"]
 class = ["ground", "big", "huge"]
 
 [item.light]
@@ -44,7 +44,7 @@ class = ["light", "bright", "sky", "alien"]
 
 [item.tool]
 recipe = ["#rock", "#rock"]
-class = ["heavy", "hurt", "tool"]
+class = ["hurt", "tool"]
 
 [item.lightning]
 recipe = [".sky", "#fire"]
@@ -63,13 +63,57 @@ recipe = [[".hot", ".hurt"], ".life"]
 class = []
 
 [item.person]
-recipe = ["#life", ".big"]
+recipe = ["#life", ["#time", ".big"]]
 class = ["life", "human"]
 
 [item.village]
-recipe = ["#person", "#person"]
+recipe = [["#person", "#person"], [".building", ".building"]]
 class = ["big"]
 
 [item.worker]
 recipe = ["#person", ".tool"]
 class = ["life", "human"]
+
+[item.corpse]
+recipe = ["#person", "#death"]
+class = ["dead"]
+
+[item.bone]
+recipe = [".dead", ["#time", "#carnivore"]]
+class = ["dead"]
+
+[item.meat]
+recipe = [".dead", "#time"]
+class = ["dead"]
+
+[item.carnivore]
+recipe = ["#meat", "#life"]
+class = ["life"]
+
+[item.time]
+recipe = ["#life", "#death"]
+class = []
+
+[item.plant]
+recipe = ["#life", ".ground"]
+class = ["plant", "life"]
+
+[item.tree]
+recipe = ["#plant", ["#time", ".big"]]
+class = ["plant", "life", "big"]
+
+[item.wood]
+recipe = ["#tree", ".tool"]
+class = ["build"]
+
+[item.house]
+recipe = [".build", ["#wood", "#worker"]]
+class = ["building"]
+
+[item.swamp]
+recipe = [".plant", ["#clay", "#lake"]]
+class = ["big", "liquid", "life"]
+
+[item.lake]
+recipe = ["#water", "#water"]
+class = ["liquid", "big"]
