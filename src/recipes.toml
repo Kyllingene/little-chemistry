@@ -177,3 +177,11 @@ class = ["decor"]
 [item.dictionary]
 recipe = ["#paper", "#pen"]
 class = ["decor"]
+
+[item.art]
+recipe = [".decor", ["#house", "#person"]]
+class = []
+
+[item.artist]
+recipe = ["#person", ["#art", "#pen"]]
+class = ["life"]
