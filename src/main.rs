@@ -5,8 +5,6 @@ use dirs::home_dir;
 mod recipe;
 use recipe::{Item, Recipe, Id};
 
-const ITEM_DATA: &str = include_str!("recipes.toml");
-
 fn get_item(items: &Vec<Item>, filepath: &PathBuf) -> Result<Item, ()> {
     let mut line = String::new();
     stdin().read_line(&mut line).expect("Failed to read input");
@@ -32,7 +30,7 @@ fn get_item(items: &Vec<Item>, filepath: &PathBuf) -> Result<Item, ()> {
             Err(e) => eprintln!("failed to save game (to {}): {e}", filepath.display()),
         }
 
-        exit(0);
+	exit(0);
     }
 
     if let Some(item) = items.iter().find(|i| Id::Item(i.id) == id) {
@@ -90,8 +88,8 @@ fn get_available(items: &Vec<Item>, filepath: &PathBuf) -> Vec<Item> {
     }
 }
 
-fn main() {
-    let items = recipe::Item::from_toml(ITEM_DATA).expect("Failed to load recipes");
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let items = recipe::Item::init()?;
 
     let mut filepath = home_dir().unwrap_or(Path::new("~/").to_path_buf());
     filepath.push(".little-chemistry-save");
@@ -107,7 +105,7 @@ fn main() {
                 }
             }
             
-            return;
+            return Ok(());
         }
 
         println!("\n\n\nyou have:");
@@ -116,17 +114,17 @@ fn main() {
         }
 
         print!("item 1: ");
-        stdout().flush().unwrap();
+        stdout().flush()?;
         let left = match get_item(&available, &filepath) {
             Ok(i) => i,
             Err(_) => continue,
         };
 
         print!("item 2: ");
-        stdout().flush().unwrap();
+        stdout().flush()?;
         let right = match get_item(&available, &filepath) {
             Ok(i) => i,
-            Err(_) => {continue},
+            Err(_) => continue,
         };
 
         println!("{}[2J{0}[999F", 27 as char);

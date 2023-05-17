@@ -5,6 +5,8 @@ use std::io::{self, ErrorKind};
 use std::process::exit;
 use std::str::FromStr;
 
+const ITEM_DATA: &str = include_str!("recipes.toml");
+
 fn hash(i: impl Hash) -> u64 {
     let mut hasher = DefaultHasher::new();
     i.hash(&mut hasher);
@@ -20,8 +22,8 @@ pub struct Item {
 }
 
 impl Item {
-    pub fn from_toml(data: &str) -> io::Result<Vec<Self>> {
-        let toml_data = toml::from_str::<toml::Value>(&data)
+    pub fn init() -> io::Result<Vec<Self>> {
+	let toml_data = toml::from_str::<toml::Value>(ITEM_DATA)
             .map_err(|e| io::Error::new(ErrorKind::InvalidInput, e))?;
 
         let mut items = Vec::new();

@@ -117,3 +117,63 @@ class = ["big", "liquid", "life"]
 [item.lake]
 recipe = ["#water", "#water"]
 class = ["liquid", "big"]
+
+[item.sand]
+recipe = [["#dirt", "#lake"], ["#rock", "#time"]]
+class = ["ground"]
+
+[item.hourglass]
+recipe = ["#sand", ["#glass", "#time"]]
+class = ["decor"]
+
+[item.glass]
+recipe = ["#sand", ".hot"]
+class = ["build"]
+
+[item.dune]
+recipe = ["#sand", "#hill"]
+class = ["ground", "big"]
+
+[item.fish]
+recipe = [".liquid", "#life"]
+class = ["life", "aquatic"]
+
+[item.spoon]
+recipe = ["#tool", "#food"]
+class = []
+
+[item.food]
+recipe = [["#meat", ".hot"], [".plant", ".hot"]]
+class = []
+
+[item.lamp]
+recipe = ["#glass", ".light"]
+class = ["light", "decor"]
+
+[item.fossil]
+recipe = [["#time", "#death"], "#clay"]
+class = ["ground"]
+
+[item.dust]
+recipe = ["#dirt", "#air"]
+class = ["ground"]
+
+[item.sawdust]
+recipe = [[".tool", "#dust"], "#wood"]
+class = []
+
+[item.pulp]
+recipe = ["#sawdust", ".liquid"]
+class = []
+
+[item.paper]
+recipe = ["#pulp", ["#time", "#air", ".hot"]]
+class = ["decor"]
+
+[item.pen]
+recipe = ["#paper", "#tool"]
+class = ["decor"]
+
+[item.dictionary]
+recipe = ["#paper", "#pen"]
+class = ["decor"]
