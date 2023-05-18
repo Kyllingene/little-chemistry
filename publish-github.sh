@@ -5,7 +5,7 @@ echo "Building WASM package..."
 cargo build --release --features=gui --target=wasm32-unknown-unknown
 
 echo "Running Github deploy script..."
-set current_branch $(git branch --show-current)
+current_branch="$(git branch --show-current)"
 git checkout gh-pages
 
 set +e
