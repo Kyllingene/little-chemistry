@@ -2,6 +2,7 @@ use macroquad::prelude::*;
 
 use crate::recipe::{self, Item, Recipe};
 
+#[derive(Debug)]
 struct ItemBox {
     item: Item,
     x: f32,

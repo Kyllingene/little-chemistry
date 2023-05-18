@@ -22,6 +22,10 @@ class = ["hot", "bright", "ground"]
 recipe = ["#lava", ["#time", ".cool"]]
 class = ["hard", "ground", "build"]
 
+[item.metal]
+recipe = ["#rock", ".hot"]
+class = ["decor", "material"]
+
 [item.hill]
 recipe = [".ground", ".ground"]
 class = ["ground", "big"]
@@ -63,7 +67,7 @@ recipe = [[".hot", ".hurt"], ".life"]
 class = []
 
 [item.person]
-recipe = ["#life", ["#time", ".big"]]
+recipe = ["#life", ["#time", ".tool", "#house", ".decor"]]
 class = ["life", "human"]
 
 [item.village]
@@ -180,7 +184,7 @@ class = ["decor"]
 
 [item.art]
 recipe = [".decor", ["#house", "#person"]]
-class = []
+class = ["decor"]
 
 [item.artist]
 recipe = ["#person", ["#art", "#pen"]]
@@ -197,3 +201,51 @@ class = ["build"]
 [item.forest]
 recipe = ["#tree", "#tree"]
 class = ["burn", "ecosystem"]
+
+[item.teacher]
+recipe = ["#dictionary", ".human"]
+class = ["life", "human"]
+
+[item.gold]
+recipe = ["#metal", "#lightning"]
+class = ["decor", "money"]
+
+[item.silver]
+recipe = ["#metal", "#light"]
+class = ["decor", "money"]
+
+[item.moon]
+recipe = ["#rock", ["#light", "#sky"]]
+class = ["high", "ground", "bright"]
+
+[item.jewel]
+recipe = ["#rock", "#glass"]
+class = ["decor", "money"]
+
+[item.crown]
+recipe = ["#gold", "#jewel"]
+class = ["decor", "money"]
+
+[item.diadem]
+recipe = ["#silver", "#jewel"]
+class = ["decor", "money"]
+
+[item.king]
+recipe = ["#person", "#crown"]
+class = ["life", "human", "money"]
+
+[item.queen]
+recipe = ["#person", "#diadem"]
+class = ["life", "human", "money"]
+
+[item.ash]
+recipe = [[".burn", ".hot"], ["#nuke", ".anything"]]
+class = []
+
+[item.nuke]
+recipe = ["#fire", "#fire"]
+class = []
+
+[item.midas]
+recipe = ["#gold", "#king"]
+class = ["myth", "life", "human", "money"]

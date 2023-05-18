@@ -196,7 +196,7 @@ impl PartialEq<(Id, Id)> for &Recipe {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug)]
 pub enum Id {
     Item(ItemId),
     Class(ClassId),
@@ -204,40 +204,35 @@ pub enum Id {
 
 impl Id {
     pub fn class(id: &str) -> Self {
-        Self::Class(ClassId(hash(id)))
+        if id == "anything" {
+            Self::Class(ClassId(0))
+        } else {
+            Self::Class(ClassId(hash(id)))
+        }
     }
 
     pub fn item(id: &str) -> Self {
         Self::Item(ItemId(hash(id)))
     }
-}
 
-impl Display for Id {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    pub fn zero(&self) -> bool {
         match self {
-            Self::Item(id) => write!(f, "#({})", id.0),
-            Self::Class(id) => write!(f, ".({})", id.0),
+            Id::Item(id) => id.0 == 0,
+            Id::Class(id) => id.0 == 0,
         }
     }
 }
 
-impl PartialEq<Item> for Id {
-    fn eq(&self, other: &Item) -> bool {
-        match self {
-            Id::Item(id) => {
-                if &other.id == id {
-                    true
-                } else {
-                    false
-                }
-            }
-            Id::Class(id) => {
-                if other.classes.contains(id) {
-                    true
-                } else {
-                    false
-                }
-            }
+impl PartialEq for Id {
+    fn eq(&self, other: &Self) -> bool {
+        if self.zero() || other.zero() {
+            return true;
+        }
+
+        match (self, other) {
+            (Self::Item(l0), Self::Item(r0)) => l0 == r0,
+            (Self::Class(l0), Self::Class(r0)) => l0 == r0,
+            _ => false,
         }
     }
 }
