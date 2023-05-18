@@ -1,0 +1,16 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=etex 2023.5.2)  17 MAY 2023 19:49
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\def\Link#1.a.b.c.{\expandafter\def\csname tex4ht\endcsname{\expandafter\def\
+csname tex4ht\endcsname{#1,html}\input tex4ht.sty }}\def\HCode{\futurelet\HCode
+\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\e
+xpandafter\Link\fi}\HCode .a.b.c.\input
+
+*
+! Emergency stop.
+<*> 
+    
+End of file on the terminal!
+
+No pages of output.

@@ -36,7 +36,7 @@ impl ItemBox {
     }
 
     fn draw(&self) {
-        draw_text(&self.item.name, self.x, self.y, 20.0, DARKGRAY);
+        draw_text(&self.item.name, self.x, self.y, 20.0, WHITE);
         draw_rectangle_lines(
             self.x - 2.0,
             self.y - 15.0,
@@ -101,17 +101,25 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         let right = screen_width();
-        // let bottom = screen_height();
-        clear_background(WHITE);
+        let bottom = screen_height();
 
         if is_key_pressed(KeyCode::Escape) {
-            break;
+            #[cfg(not(target_family="wasm"))]
+            return Ok(());
         } else if is_key_pressed(KeyCode::C) {
             boxes.clear();
         } else if is_key_pressed(KeyCode::Up) && scroll > 0.0 {
             scroll -= 30.0;
         } else if is_key_pressed(KeyCode::Down) {
             scroll += 30.0;
+        }
+
+        clear_background(DARKGRAY);
+
+        let lines = textwrap::wrap("C to clear,  Up/Down to scroll,  Esc to quit", ((right - 15.0) / 10.0) as usize);
+        let start = bottom - (lines.len() as f32 * 15.0);
+        for (i, line) in lines.iter().enumerate() {
+            draw_text(line, 15.0, start + (i as f32 * 15.0), 20.0, BLUE);
         }
 
         for item in &boxes {
@@ -121,14 +129,14 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let tx = right - 100.0;
         let mut ty = 30.0 - scroll;
         for item in &available {
-            draw_text(&item.name, tx, ty, 20.0, RED);
+            draw_text(&item.name, tx, ty, 20.0, GREEN);
             draw_rectangle_lines(
                 tx - 2.0,
                 ty - 15.0,
                 item.name.len() as f32 * 10.0,
                 22.0,
                 4.0,
-                GREEN,
+                RED,
             );
 
             ty += 23.0;
@@ -150,6 +158,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 for item in &mut boxes {
                     if item.contains(mx, my) {
                         item.mv(nx - mx, ny - my);
+                        break;
                     }
                 }
             }
@@ -240,6 +249,4 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         next_frame().await
     }
-
-    Ok(())
 }
