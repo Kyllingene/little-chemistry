@@ -246,7 +246,7 @@ class = []
 recipe = ["#fire", "#fire"]
 class = []
 
-[item.midas]
+[item.Midas]
 recipe = ["#gold", "#king"]
 class = ["myth", "life", "human", "money"]
 

@@ -156,11 +156,18 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
         } else if (nx, ny) != (mx, my) {
             if is_pressed {
-                for item in &mut boxes {
+                let mut dragged = None;
+                for (i, item) in boxes.iter_mut().enumerate() {
                     if item.contains(mx, my) {
                         item.mv(nx - mx, ny - my);
+                        dragged = Some(i);
                         break;
                     }
+                }
+
+                if let Some(i) = dragged {
+                    let item = boxes.remove(i);
+                    boxes.insert(0, item);
                 }
             }
         }
