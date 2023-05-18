@@ -23,7 +23,7 @@ pub struct Item {
 
 impl Item {
     pub fn init() -> io::Result<Vec<Self>> {
-	let toml_data = toml::from_str::<toml::Value>(ITEM_DATA)
+        let toml_data = toml::from_str::<toml::Value>(ITEM_DATA)
             .map_err(|e| io::Error::new(ErrorKind::InvalidInput, e))?;
 
         let mut items = Vec::new();
@@ -37,7 +37,6 @@ impl Item {
                         ErrorKind::InvalidInput,
                         format!("item.{name} must have an array, `class`"),
                     ))? {
-
                     let mut e = false;
                     for class in classes {
                         if let toml::Value::String(class) = class {
@@ -93,9 +92,7 @@ impl Item {
 
     pub fn ids(&self) -> Vec<Id> {
         let mut ids = vec![Id::Item(self.id)];
-        ids.append(&mut self.classes.iter()
-            .map(|id| Id::Class(*id))
-            .collect());
+        ids.append(&mut self.classes.iter().map(|id| Id::Class(*id)).collect());
 
         ids
     }
@@ -142,6 +139,8 @@ impl Recipe {
             for sub in recipe {
                 recipes.append(&mut Self::from_value(sub)?);
             }
+            
+            return Ok(recipes);
         }
 
         if let toml::Value::String(left) = &recipe.get(0).ok_or(())? {
@@ -181,7 +180,7 @@ impl Display for Recipe {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Starter => write!(f, "$starter"),
-            Self::Normal(left, right) => write!(f, "Recipe({:?} + {:?})", left, right)
+            Self::Normal(left, right) => write!(f, "Recipe({:?} + {:?})", left, right),
         }
     }
 }

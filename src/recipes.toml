@@ -96,19 +96,19 @@ class = []
 
 [item.plant]
 recipe = ["#life", ".ground"]
-class = ["plant", "life"]
+class = ["plant", "life", "burn"]
 
 [item.tree]
 recipe = ["#plant", ["#time", ".big"]]
-class = ["plant", "life", "big"]
+class = ["plant", "life", "big", "burn"]
 
 [item.wood]
 recipe = ["#tree", ".tool"]
-class = ["build"]
+class = ["build", "burn"]
 
 [item.house]
 recipe = [".build", ["#wood", "#worker"]]
-class = ["building"]
+class = ["building", "burn"]
 
 [item.swamp]
 recipe = [".plant", ["#clay", "#lake"]]
@@ -155,7 +155,7 @@ recipe = [["#time", "#death"], "#clay"]
 class = ["ground"]
 
 [item.dust]
-recipe = ["#dirt", "#air"]
+recipe = [["#dirt", "#air"], [".burn", ".hot"]]
 class = ["ground"]
 
 [item.sawdust]
@@ -185,3 +185,15 @@ class = []
 [item.artist]
 recipe = ["#person", ["#art", "#pen"]]
 class = ["life"]
+
+[item.fisher]
+recipe = [".human", ".aquatic"]
+class = ["life", "human"]
+
+[item.brick]
+recipe = ["#clay", [".hot", "#time", "#air"]]
+class = ["build"]
+
+[item.forest]
+recipe = ["#tree", "#tree"]
+class = ["burn", "ecosystem"]

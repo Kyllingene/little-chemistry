@@ -1,11 +1,17 @@
 [package]
 name = "little-chemistry"
-version = "1.0.1"
+version = "2.0.0"
 edition = "2021"
 
 license = "MIT"
 description = "A CLI game where you combine things to create new ones."
 
 [dependencies]
-dirs = "5.0.1"
+dirs = { version = "5.0.1", optional = true}
+macroquad = { version = "0.3.25", optional = true }
 toml = "0.7.3"
+
+[features]
+default = []
+term = ["dirs"]
+gui = ["macroquad"]
