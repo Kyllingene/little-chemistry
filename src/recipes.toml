@@ -207,7 +207,7 @@ recipe = ["#dictionary", ".human"]
 class = ["life", "human"]
 
 [item.gold]
-recipe = ["#metal", "#lightning"]
+recipe = [["#metal", "#lightning"], ["#midas", ".anything"]]
 class = ["decor", "money"]
 
 [item.silver]
@@ -224,11 +224,11 @@ class = ["decor", "money"]
 
 [item.crown]
 recipe = ["#gold", "#jewel"]
-class = ["decor", "money"]
+class = ["money"]
 
 [item.diadem]
 recipe = ["#silver", "#jewel"]
-class = ["decor", "money"]
+class = ["money"]
 
 [item.king]
 recipe = ["#person", "#crown"]
@@ -249,3 +249,15 @@ class = []
 [item.midas]
 recipe = ["#gold", "#king"]
 class = ["myth", "life", "human", "money"]
+
+[item.cloud]
+recipe = ["#sky", "#water"]
+class = ["sky", "high", "weather"]
+
+[item.rain]
+recipe = ["#cloud", "#water"]
+class = ["sky", "high", "weather"]
+
+[item.storm]
+recipe = ["#weather", ["#weather", "#air"]]
+class = ["sky", "high", "weather"]
