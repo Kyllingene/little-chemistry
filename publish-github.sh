@@ -8,8 +8,8 @@ echo "Running Github deploy script..."
 set current_branch $(git branch --show-current)
 git checkout gh-pages
 
-./publish.sh
+set +e
+./publish.sh || echo -e "\n\n === Failed to publish ===\n\n"
+set -e
 
 git checkout "$current_branch"
-
-echo "Done!"
