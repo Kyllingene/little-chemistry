@@ -116,7 +116,7 @@ pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         clear_background(DARKGRAY);
 
-        let lines = textwrap::wrap("C to clear,  Up/Down to scroll,  Esc to quit", ((right - 15.0) / 10.0) as usize);
+        let lines = textwrap::wrap("C to clear,  Up / Down arrows to scroll,  Esc to quit", ((right - 15.0) / 10.0) as usize);
         let start = bottom - (lines.len() as f32 * 15.0);
         for (i, line) in lines.iter().enumerate() {
             draw_text(line, 15.0, start + (i as f32 * 15.0), 20.0, BLUE);
