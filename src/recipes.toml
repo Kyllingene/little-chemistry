@@ -67,7 +67,21 @@ recipe = [[".hot", ".hurt"], ".life"]
 class = []
 
 [item.person]
-recipe = ["#life", ["#time", ".tool", "#house", ".decor"]]
+recipe = [
+    [
+        "#life",
+        [
+            "#time",
+            ".tool",
+            "#house",
+            ".decor",
+        ],
+    ],
+    [
+        "#corpse",
+        "#necromancer",
+    ],
+]
 class = ["life", "human"]
 
 [item.village]
@@ -248,7 +262,7 @@ class = []
 
 [item.Midas]
 recipe = ["#gold", "#king"]
-class = ["myth", "life", "human", "money"]
+class = ["magic", "life", "human", "money"]
 
 [item.cloud]
 recipe = ["#sky", "#water"]
@@ -261,3 +275,23 @@ class = ["sky", "high", "weather"]
 [item.storm]
 recipe = ["#weather", ["#weather", "#air"]]
 class = ["sky", "high", "weather"]
+
+[item.sword]
+recipe = ["#tool", "#metal"]
+class = ["hurt", "tool"]
+
+[item.warrior]
+recipe = ["#person", "#sword"]
+class = ["hurt", "life", "person"]
+
+[item.curse]
+recipe = ["#death", "#dictionary"]
+class = ["magic"]
+
+[item.necromancer]
+recipe = ["#curse", "#person"]
+class = ["magic", "life", "human"]
+
+[item.wizard]
+recipe = [".magic", "#person"]
+class = ["magic", "life", "human"]
