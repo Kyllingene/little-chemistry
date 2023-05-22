@@ -221,7 +221,7 @@ recipe = ["#dictionary", ".human"]
 class = ["life", "human"]
 
 [item.gold]
-recipe = [["#metal", "#lightning"], ["#midas", ".anything"]]
+recipe = [["#metal", "#lightning"], ["#Midas", ".anything"]]
 class = ["decor", "money"]
 
 [item.silver]
